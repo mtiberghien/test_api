@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  description: This api is dedidacted to train neural network using PPDG where the actor is a PID
+  version: 1.0.0
+  title: API Documentation - Smart PID
+
+paths:
+  /test:
+    get:
+      description: Get Test method
+      operationId: app.api.test.get_method
+      tags:
+        - Tests
+      parameters:
+        - in: query
+          name: param
+          required: false
+          description: A test parameter that will be displayed in the response
+          schema:
+            type: string
+            example: Test
+      responses:
+        "200":
+          description: Return a message displaying the value of the parameter that was provided in the query
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: query parameter is 'Test'
+    post:
+      description: Set Test method
+      operationId: app.api.test.set_method
+      tags:
+        - Tests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                param_1:
+                  type: integer
+                  example: 1
+                param_2:
+                  type: integer
+                  example: 2
+      responses:
+        "200":
+          description: Return a message displaying the sum of param_1 and param_2
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 1 + 2 = 3
+
+servers:
+  - url: /api
+
+
+
+
+
+
+
